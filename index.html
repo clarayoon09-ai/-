@@ -1122,66 +1122,14 @@ function showResult(){
      가 됩니다.
   ===================================================== */
 
- const mbtiData = {
-    ISTJ: {
-        image: "ISTJ.jpg"
-    },
-    ISFJ: {
-        image: "ISFJ.jpg"
-    },
-    INFJ: {
-        image: "INFJ.jpg"
-    },
-    INTJ: {
-        image: "INTJ.jpg"
-    },
-    ISTP: {
-        image: "ISTP.jpg"
-    },
-    ISFP: {
-        image: "ISFP.jpg"
-    },
-    INFP: {
-        image: "INFP.jpg"
-    },
-    INTP: {
-        image: "INTP.jpg"
-    },
-    ESTP: {
-        image: "ESTP.jpg"
-    },
-    ESFP: {
-        image: "ESFP.jpg"
-    },
-    ENFP: {
-        image: "ENFP.jpg"
-    },
-    ENTP: {
-        image: "ENTP.jpg"
-    },
-    ESTJ: {
-        image: "ESTJ.jpg"
-    },
-    ESFJ: {
-        image: "ESFJ.jpg"
-    },
-    ENFJ: {
-        image: "ENFJ.jpg"
-    },
-    ENTJ: {
-        image: "ENTJ.jpg"
-    }
-};
-  
+   const pandaImage =
+    document.getElementById("panda-image");
 
-  /*
-     index.html과 이미지가 같은 폴더이므로
-     현재 페이지 기준으로 정확한 주소를 만듭니다.
-  */
+  const imageFile =
+    imageFiles[mbti];
 
   pandaImage.src =
-    new URL(imageFile, document.baseURI).href
-    + "?v=" + Date.now();
+    imageFile + "?v=" + Date.now();
 
   pandaImage.alt =
     mbti + " 너진똑";
