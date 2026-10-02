@@ -1091,7 +1091,7 @@ function setScoreBar(
 function showResult(){
 
   const mbti = calculateMBTI();
-
+  
   const result = results[mbti];
 
   document.getElementById("quiz-screen")
@@ -1127,6 +1127,7 @@ function showResult(){
 
   const imageFile =
     imageFiles[mbti];
+    
 
   pandaImage.src =
     imageFile + "?v=" + Date.now();
