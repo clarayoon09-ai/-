@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>너진똑 성격 테스트 🐼</title>
+
+<style>
+
+/* ================================
+   기본 설정
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: 'Noto Sans KR', sans-serif;
+
+    color: #4d4650;
+
+    background:
+        radial-gradient(circle at 10% 10%, #ffe4ed 0, transparent 25%),
+        radial-gradient(circle at 90% 20%, #e9e1ff 0, transparent 25%),
+        radial-gradient(circle at 30% 90%, #fff0c9 0, transparent 25%),
+        #fffafc;
+}
+
+
+/* ================================
+   전체 컨테이너
+================================ */
+
+.container {
+    width: min(92%, 720px);
+    margin: 0 auto;
+    padding: 35px 0 60px;
+}
+
+
+/* ================================
+   공통 카드
+================================ */
+
+.card {
+    background: rgba(255,255,255,0.95);
+
+    border: 2px solid #f5e7ee;
+
+    border-radius: 32px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 15px 40px rgba(117, 91, 112, 0.10);
+}
+
+
+/* ================================
+   화면
+================================ */
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+
+/* ================================
+   시작 화면
+================================ */
+
+#start-screen {
+    text-align: center;
+}
+
+.panda-logo {
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #fff5f8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 82px;
+
+    box-shadow:
+        0 10px 25px rgba(220, 140, 170, 0.15);
+}
+
+.small-label {
+    display: inline-block;
+
+    padding: 7px 15px;
+
+    background: #fff0f5;
+
+    color: #d77b9e;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+h1 {
+    margin: 5px 0 12px;
+
+    font-family: 'Jua', sans-serif;
+
+    font-size: 46px;
+
+    color: #403a42;
+}
+
+.start-description {
+    line-height: 1.9;
+
+    color: #777;
+
+    margin-bottom: 28px;
+}
+
+.info-box {
+    background: #fff8fa;
+
+    border-radius: 20px;
+
+    padding: 17px;
+
+    margin-bottom: 28px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #8b7d84;
+}
+
+.start-button {
+    border: none;
+
+    padding: 17px 45px;
+
+    border-radius: 999px;
+
+    background: #f49ab8;
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    box-shadow: 0 6px 0 #d77c9c;
+
+    transition: 0.15s;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+}
+
+.start-button:active {
+    transform: translateY(4px);
+
+    box-shadow: 0 2px 0 #d77c9c;
+}
+
+
+/* ================================
+   질문 화면
+================================ */
+
+.progress-area {
+    margin-bottom: 18px;
+}
+
+.progress-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.progress-title {
+    font-family: 'Jua', sans-serif;
+
+    color: #9e7890;
+}
+
+.progress-number {
+    font-size: 13px;
+
+    color: #999;
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 11px;
+
+    background: #eee8ee;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f49ab8,
+            #c3b0f5
+        );
+
+    border-radius: 999px;
+
+    transition: width 0.3s ease;
+}
+
+
+/* 질문 카드 */
+
+.question-card {
+    position: relative;
+}
+
+.question-character {
+    text-align: center;
+
+    font-size: 52px;
+
+    margin-bottom: 8px;
+}
+
+.question-number {
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #d17d9e;
+
+    margin-bottom: 12px;
+}
+
+.question {
+    text-align: center;
+
+    font-family: 'Jua', sans-serif;
+
+    font-size: 29px;
+
+    line-height: 1.55;
+
+    color: #443d46;
+
+    margin: 0 0 30px;
+}
+
+
+/* 답변 버튼 */
+
+.answers {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+.answer {
+    width: 100%;
+
+    border: 2px solid #f0e7ec;
+
+    background: #fff;
+
+    border-radius: 22px;
+
+    padding: 19px 20px;
+
+    color: #514a52;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    text-align: left;
+
+    transition:
+        transform 0.15s,
+        border-color 0.15s,
+        background 0.15s;
+}
+
+.answer:hover {
+    transform: translateY(-2px);
+
+    border-color: #f2a5bf;
+
+    background: #fff7fa;
+}
+
+.answer-letter {
+    display: inline-flex;
+
+    width: 30px;
+    height: 30px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: #fff0f5;
+
+    color: #d4799b;
+
+    font-weight: 700;
+}
+
+
+/* ================================
+   결과 화면
+================================ */
+
+.result-card {
+    text-align: center;
+}
+
+.result-panda {
+    font-size: 50px;
+
+    margin-bottom: 5px;
+}
+
+.result-label {
+    font-size: 13px;
+
+    color: #a28593;
+
+    margin-bottom: 5px;
+}
+
+.result-mbti {
+    font-family: 'Jua', sans-serif;
+
+    font-size: 58px;
+
+    color: #d9779d;
+
+    letter-spacing: 2px;
+}
+
+.result-name {
+    font-family: 'Jua', sans-serif;
+
+    font-size: 32px;
+
+    margin: 5px 0 25px;
+
+    color: #443c45;
+}
+
+
+/* ================================
+   너진똑 이미지
+================================ */
+
+.result-character {
+    width: min(100%, 450px);
+
+    margin: 0 auto 25px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background: #fff5f8;
+
+    border: 2px solid #f4e4eb;
+}
+
+.result-character img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+}
+
+
+/* 이미지가 없을 때 */
+
+.image-placeholder {
+    padding: 50px 20px;
+
+    font-size: 70px;
+}
+
+.image-placeholder p {
+    margin: 15px 0 0;
+
+    font-family: 'Jua', sans-serif;
+
+    font-size: 18px;
+
+    color: #aa8e9b;
+}
+
+
+/* ================================
+   결과 설명
+================================ */
+
+.result-description {
+    max-width: 560px;
+
+    margin: 0 auto 25px;
+
+    color: #716970;
+
+    line-height: 1.85;
+
+    font-size: 15px;
+}
+
+
+/* ================================
+   태그
+================================ */
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+.tag {
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: #fff0f5;
+
+    color: #c56f91;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* ================================
+   결과 안내 박스
+================================ */
+
+.result-message {
+    background: #faf6ff;
+
+    border-radius: 20px;
+
+    padding: 16px;
+
+    margin-bottom: 25px;
+
+    color: #847991;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ================================
+   다시하기
+================================ */
+
+.restart-button {
+    border: none;
+
+    padding: 15px 34px;
+
+    border-radius: 999px;
+
+    background: #8f7bc3;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    transition: 0.15s;
+}
+
+.restart-button:hover {
+    transform: translateY(-2px);
+
+    background: #806bb6;
+}
+
+
+/* ================================
+   모바일
+================================ */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 20px;
+    }
+
+    .card {
+        padding: 27px 18px;
+
+        border-radius: 25px;
+    }
+
+    .panda-logo {
+        width: 120px;
+        height: 120px;
+
+        font-size: 68px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .question {
+        font-size: 24px;
+    }
+
+    .answer {
+        padding: 17px;
+
+        font-size: 15px;
+    }
+
+    .result-mbti {
+        font-size: 46px;
+    }
+
+    .result-name {
+        font-size: 27px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- =====================================
+     시작 화면
+===================================== -->
+
+<section id="start-screen" class="screen active">
+
+    <div class="card">
+
+        <div class="panda-logo">
+            🐼
+        </div>
+
+        <div class="small-label">
+            NUJINDDOK PERSONALITY TEST
+        </div>
+
+        <h1>
+            너진똑 성격 테스트
+        </h1>
+
+        <p class="start-description">
+            나는 어떤 너진똑일까? 🐼<br>
+            32개의 질문에 답하고<br>
+            나와 닮은 너진똑을 찾아보세요!
+        </p>
+
+        <div class="info-box">
+
+            ✦ 총 32문항<br>
+            ✦ 약 3~5분 소요<br>
+            ✦ 16가지 MBTI 유형<br>
+            ✦ 결과에 맞는 너진똑 등장!
+
+        </div>
+
+        <button
+            class="start-button"
+            onclick="startTest()"
+        >
+            🐼 테스트 시작하기
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     질문 화면
+===================================== -->
+
+<section id="quiz-screen" class="screen">
+
+    <div class="progress-area">
+
+        <div class="progress-top">
+
+            <span class="progress-title">
+                🐼 너진똑 찾는 중...
+            </span>
+
+            <span class="progress-number">
+                <span id="current-number">1</span> / 32
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                id="progress-fill"
+                class="progress-fill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card question-card">
+
+        <div class="question-character">
+            🐼
+        </div>
+
+        <div
+            id="question-number"
+            class="question-number"
+        >
+            Q1
+        </div>
+
+        <div
+            id="question-text"
+            class="question"
+        >
+            질문
+        </div>
+
+        <div
+            id="answers"
+            class="answers"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     결과 화면
+===================================== -->
+
+<section id="result-screen" class="screen">
+
+    <div class="card result-card">
+
+        <div class="result-panda">
+            🐼
+        </div>
+
+        <div class="result-label">
+            너진똑이 알려주는 나의 유형
+        </div>
+
+        <div
+            id="result-mbti"
+            class="result-mbti"
+        >
+            ENFP
+        </div>
+
+        <div
+            id="result-name"
+            class="result-name"
+        >
+            아이디어 폭죽
+        </div>
+
+
+        <!-- MBTI별 너진똑 그림 -->
+
+        <div class="result-character">
+
+            <img
+                id="result-image"
+                src=""
+                alt="너진똑 캐릭터"
+                onerror="showImageFallback()"
+            >
+
+            <div
+                id="image-placeholder"
+                class="image-placeholder"
+                style="display:none;"
+            >
+                🐼
+
+                <p>
+                    너진똑 그림 준비 중!
+                </p>
+            </div>
+
+        </div>
+
+
+        <p
+            id="result-description"
+            class="result-description"
+        ></p>
+
+
+        <div
+            id="result-tags"
+            class="tags"
+        ></div>
+
+
+        <div class="result-message">
+
+            ✦ 이 테스트는 재미를 위한 성격 테스트예요.
+            <br>
+            MBTI는 상황과 시기에 따라 달라질 수 있어요!
+
+        </div>
+
+
+        <button
+            class="restart-button"
+            onclick="restartTest()"
+        >
+            🔄 다시 테스트하기
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   32개 질문
+========================================================= */
+
+const questions = [
+
+    /* ---------------- E / I ---------------- */
+
+    {
+        text: "친구들과 약속이 없는 주말, 나는?",
+        a: "친구에게 먼저 연락해서 만나자고 한다.",
+        b: "혼자만의 시간을 보내며 충전한다.",
+        type: "EI"
+    },
+
+    {
+        text: "새로운 모임에 처음 갔다면?",
+        a: "먼저 말을 걸며 사람들과 친해진다.",
+        b: "일단 주변 분위기를 조용히 살핀다.",
+        type: "EI"
+    },
+
+    {
+        text: "재미있는 일이 생겼을 때 나는?",
+        a: "바로 친구들에게 이야기한다.",
+        b: "혼자 생각해본 뒤 나중에 이야기한다.",
+        type: "EI"
+    },
+
+    {
+        text: "하루 종일 사람들과 함께 있었다면?",
+        a: "아직 더 놀고 싶다!",
+        b: "혼자 조용히 쉬고 싶다.",
+        type: "EI"
+    },
+
+    {
+        text: "발표가 끝난 뒤 나의 기분은?",
+        a: "사람들의 반응이 재미있다.",
+        b: "끝났다는 사실에 안도한다.",
+        type: "EI"
+    },
+
+    {
+        text: "친구가 새로운 사람을 데려왔다.",
+        a: "자연스럽게 대화에 참여한다.",
+        b: "누가 말을 걸어주기를 기다린다.",
+        type: "EI"
+    },
+
+    {
+        text: "내가 좋아하는 이야기를 할 때?",
+        a: "말하다 보면 점점 신난다.",
+        b: "머릿속에서 정리한 뒤 말한다.",
+        type: "EI"
+    },
+
+    {
+        text: "스트레스를 받았을 때 나는?",
+        a: "누군가와 이야기하면서 푼다.",
+        b: "혼자 있는 시간으로 회복한다.",
+        type: "EI"
+    },
+
+
+    /* ---------------- S / N ---------------- */
+
+    {
+        text: "여행 계획을 세울 때 나는?",
+        a: "장소와 이동 방법부터 확인한다.",
+        b: "그곳에서 어떤 일이 벌어질지 상상한다.",
+        type: "SN"
+    },
+
+    {
+        text: "친구가 이야기를 해주면?",
+        a: "실제로 무슨 일이 있었는지 집중한다.",
+        b: "그 이야기의 의미나 숨은 뜻을 생각한다.",
+        type: "SN"
+    },
+
+    {
+        text: "새로운 물건을 살 때?",
+        a: "실용성과 실제 사용법을 본다.",
+        b: "이걸 어떻게 활용할지 상상한다.",
+        type: "SN"
+    },
+
+    {
+        text: "영화를 보고 난 뒤 더 기억에 남는 것은?",
+        a: "구체적인 장면과 사건",
+        b: "작품의 메시지와 분위기",
+        type: "SN"
+    },
+
+    {
+        text: "설명을 들을 때 나는?",
+        a: "구체적인 예시가 있으면 이해하기 쉽다.",
+        b: "전체적인 개념부터 이해하고 싶다.",
+        type: "SN"
+    },
+
+    {
+        text: "새로운 아이디어가 떠오르면?",
+        a: "실제로 가능한지 먼저 생각한다.",
+        b: "일단 상상부터 마음껏 해본다.",
+        type: "SN"
+    },
+
+    {
+        text: "사진을 볼 때 나는?",
+        a: "사진 속 실제 상황을 관찰한다.",
+        b: "사진에서 느껴지는 분위기를 상상한다.",
+        type: "SN"
+    },
+
+    {
+        text: "수업에서 더 재미있는 것은?",
+        a: "실제 사례와 구체적인 정보",
+        b: "새로운 이론과 가능성",
+        type: "SN"
+    },
+
+
+    /* ---------------- T / F ---------------- */
+
+    {
+        text: "친구가 고민을 털어놓았다.",
+        a: "문제를 해결할 방법부터 생각한다.",
+        b: "일단 친구의 마음부터 공감한다.",
+        type: "TF"
+    },
+
+    {
+        text: "친구와 의견이 충돌했을 때?",
+        a: "누가 더 논리적인지 생각한다.",
+        b: "서로 기분이 상하지 않는 게 중요하다.",
+        type: "TF"
+    },
+
+    {
+        text: "누군가 실수를 했다면?",
+        a: "왜 실수했는지 원인을 분석한다.",
+        b: "우선 괜찮다고 말해준다.",
+        type: "TF"
+    },
+
+    {
+        text: "친구에게 솔직한 조언을 한다면?",
+        a: "필요하다면 직설적으로 말한다.",
+        b: "상처받지 않도록 표현을 조심한다.",
+        type: "TF"
+    },
+
+    {
+        text: "논쟁에서 더 중요한 것은?",
+        a: "논리적으로 맞는 주장",
+        b: "서로를 존중하는 분위기",
+        type: "TF"
+    },
+
+    {
+        text: "친구가 시험에서 낮은 점수를 받았다.",
+        a: "다음에는 어떻게 공부할지 같이 생각한다.",
+        b: "속상했겠다며 먼저 위로한다.",
+        type: "TF"
+    },
+
+    {
+        text: "중요한 결정을 내릴 때 나는?",
+        a: "객관적인 사실을 중요하게 본다.",
+        b: "사람들의 감정을 중요하게 본다.",
+        type: "TF"
+    },
+
+    {
+        text: "누군가 나에게 비판적인 말을 했다.",
+        a: "논리적인 근거가 있는지 생각한다.",
+        b: "그 말을 들었을 때의 기분부터 생각한다.",
+        type: "TF"
+    },
+
+
+    /* ---------------- J / P ---------------- */
+
+    {
+        text: "여행을 간다면?",
+        a: "미리 일정표를 만들어둔다.",
+        b: "그날그날 하고 싶은 걸 정한다.",
+        type: "JP"
+    },
+
+    {
+        text: "시험 공부를 할 때?",
+        a: "계획표를 만들어 지키려고 한다.",
+        b: "그날 컨디션에 따라 공부한다.",
+        type: "JP"
+    },
+
+    {
+        text: "숙제가 많이 남아 있다면?",
+        a: "미리 끝내놓으면 마음이 편하다.",
+        b: "마감 직전에 집중력이 올라간다.",
+        type: "JP"
+    },
+
+    {
+        text: "친구와 약속을 잡을 때?",
+        a: "시간과 장소를 미리 정한다.",
+        b: "대략 정하고 상황에 따라 바꾼다.",
+        type: "JP"
+    },
+
+    {
+        text: "방학이 시작됐다!",
+        a: "하고 싶은 일을 어느 정도 계획한다.",
+        b: "아무 계획 없이 일단 즐긴다.",
+        type: "JP"
+    },
+
+    {
+        text: "갑자기 일정이 바뀐다면?",
+        a: "조금 당황스럽고 아쉽다.",
+        b: "새로운 상황도 재미있다.",
+        type: "JP"
+    },
+
+    {
+        text: "과제를 할 때 나는?",
+        a: "완성하고 깔끔하게 끝내는 게 좋다.",
+        b: "여러 아이디어를 시도하는 게 좋다.",
+        type: "JP"
+    },
+
+    {
+        text: "내 책상 상태는?",
+        a: "물건이 어느 정도 정리되어 있다.",
+        b: "여기저기 있지만 나는 어디 있는지 안다.",
+        type: "JP"
+    }
+
+];
+
+
+/* =========================================================
+   16가지 너진똑 결과 (image 링크를 넣을 수 있도록 수정됨)
+========================================================= */
+
+const results = {
+
+    ISTJ: {
+        name: "차분한 계획가",
+        description: "꼼꼼하고 책임감이 강한 너진똑! 해야 할 일을 차근차근 해내고 약속을 중요하게 생각해요.",
+        tags: ["꼼꼼함", "책임감", "계획적"],
+        image: "https://example.com/images/istj.png" // 여기에 사진 URL 링크 넣기
+    },
+
+    ISFJ: {
+        name: "포근한 수호자",
+        description: "주변 사람을 세심하게 챙기는 따뜻한 너진똑! 조용하지만 필요한 순간에는 누구보다 든든해요.",
+        tags: ["배려심", "다정함", "성실함"],
+        image: "https://example.com/images/isfj.png"
+    },
+
+    INFJ: {
+        name: "조용한 꿈꾸는 사람",
+        description: "혼자만의 깊은 생각과 상상력을 가진 너진똑! 사람과 세상을 바라보는 자신만의 시선이 있어요.",
+        tags: ["상상력", "통찰력", "감성"],
+        image: "https://example.com/images/infj.png"
+    },
+
+    INTJ: {
+        name: "혼자 걷는 전략가",
+        description: "목표를 세우고 자신만의 방법으로 나아가는 너진똑! 복잡한 문제를 구조적으로 바라보는 편이에요.",
+        tags: ["전략적", "독립적", "분석적"],
+        image: "https://example.com/images/intj.png"
+    },
+
+    ISTP: {
+        name: "쿨한 해결사",
+        description: "복잡한 상황에서도 직접 해결 방법을 찾아내는 너진똑! 말보다 행동으로 보여주는 타입이에요.",
+        tags: ["실용적", "침착함", "문제해결"],
+        image: "https://example.com/images/istp.png"
+    },
+
+    ISFP: {
+        name: "말랑한 감성 수집가",
+        description: "작은 순간의 아름다움을 발견하는 너진똑! 자신만의 감성과 취향을 소중하게 생각해요.",
+        tags: ["감성", "예술적", "자유로움"],
+        image: "https://example.com/images/isfp.png"
+    },
+
+    INFP: {
+        name: "몽글몽글한 이상가",
+        description: "상상력이 풍부하고 자신만의 가치관을 중요하게 생각하는 너진똑! 마음속에 작은 세계를 가지고 있어요.",
+        tags: ["상상력", "이상적", "따뜻함"],
+        image: "https://example.com/images/infp.png"
+    },
+
+    INTP: {
+        name: "호기심 많은 탐구자",
+        description: "궁금한 것이 생기면 끝까지 파고드는 너진똑! 독특한 아이디어와 질문을 끊임없이 만들어내요.",
+        tags: ["호기심", "논리적", "창의적"],
+        image: "https://example.com/images/intp.png"
+    },
+
+    ESTP: {
+        name: "통통 튀는 행동파",
+        description: "생각만 하기보다 직접 움직이며 경험하는 너진똑! 예상하지 못한 상황도 재미있게 받아들여요.",
+        tags: ["행동파", "즉흥적", "활동적"],
+        image: "https://example.com/images/estp.png"
+    },
+
+    ESFP: {
+        name: "반짝이는 분위기 메이커",
+        description: "주변을 즐겁게 만들어주는 너진똑! 재미있는 순간을 사람들과 함께 나누는 걸 좋아해요.",
+        tags: ["사교적", "즐거움", "에너지"],
+        image: "https://example.com/images/esfp.png"
+    },
+
+    ENFP: {
+        name: "아이디어 폭죽",
+        description: "새로운 생각과 가능성이 끊임없이 터지는 너진똑! 호기심이 많고 새로운 경험을 좋아해요.",
+        tags: ["창의적", "호기심", "열정"],
+        image: "https://example.com/images/enfp.png"
+    },
+
+    ENTP: {
+        name: "멈추지 않는 발상 공장",
+        description: "새로운 아이디어를 생각하고 토론하는 것을 즐기는 너진똑! 남들이 생각하지 못한 방법을 찾아내요.",
+        tags: ["아이디어", "논리", "도전"],
+        image: "https://example.com/images/entp.png"
+    },
+
+    ESTJ: {
+        name: "척척 해내는 총괄대장",
+        description: "해야 할 일을 빠르게 정리하고 실행하는 너진똑! 목표가 생기면 주변을 이끌며 움직여요.",
+        tags: ["실행력", "관리", "책임감"],
+        image: "https://example.com/images/estj.png"
+    },
+
+    ESFJ: {
+        name: "모두의 다정한 친구",
+        description: "사람들과 함께하는 것을 좋아하고 주변을 세심하게 챙기는 너진똑! 따뜻한 분위기를 만들어요.",
+        tags: ["사교적", "배려", "친화력"],
+        image: "https://example.com/images/esfj.png"
+    },
+
+    ENFJ: {
+        name: "따뜻한 리더",
+        description: "사람들에게 힘을 주고 함께 성장하는 것을 좋아하는 너진똑! 자연스럽게 주변 사람들을 이끌어요.",
+        tags: ["리더십", "공감", "열정"],
+        image: "https://example.com/images/enfj.png"
+    },
+
+    ENTJ: {
+        name: "목표를 향해 가는 지휘자",
+        description: "큰 목표를 세우고 실행 방법을 찾아가는 너진똑! 효율적으로 일을 추진하는 힘이 있어요.",
+        tags: ["리더십", "전략", "추진력"],
+        image: "https://example.com/images/entj.png"
+    }
+
+};
+
+
+/* =========================================================
+   테스트 상태
+========================================================= */
+
+let currentQuestion = 0;
+
+let scores = {
+    E: 0,
+    I: 0,
+
+    S: 0,
+    N: 0,
+
+    T: 0,
+    F: 0,
+
+    J: 0,
+    P: 0
+};
+
+
+/* =========================================================
+   화면 전환
+========================================================= */
+
+function showScreen(id) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   테스트 시작
+========================================================= */
+
+function startTest() {
+
+    currentQuestion = 0;
+
+    scores = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+    };
+
+    showScreen("quiz-screen");
+
+    showQuestion();
+}
+
+
+/* =========================================================
+   질문 보여주기
+========================================================= */
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+
+    document.getElementById("question-number").textContent =
+        "Q" + (currentQuestion + 1);
+
+
+    document.getElementById("current-number").textContent =
+        currentQuestion + 1;
+
+
+    document.getElementById("question-text").textContent =
+        q.text;
+
+
+    const progress =
+        (currentQuestion / questions.length) * 100;
+
+
+    document.getElementById("progress-fill").style.width =
+        progress + "%";
+
+
+    const answers =
+        document.getElementById("answers");
+
+
+    answers.innerHTML = "";
+
+
+    /* A 버튼 */
+
+    const buttonA =
+        document.createElement("button");
+
+    buttonA.className = "answer";
+
+    buttonA.innerHTML =
+        '<span class="answer-letter">A</span>' +
+        q.a;
+
+    buttonA.onclick = function() {
+
+        chooseAnswer("A");
+
+    };
+
+
+    /* B 버튼 */
+
+    const buttonB =
+        document.createElement("button");
+
+    buttonB.className = "answer";
+
+    buttonB.innerHTML =
+        '<span class="answer-letter">B</span>' +
+        q.b;
+
+    buttonB.onclick = function() {
+
+        chooseAnswer("B");
+
+    };
+
+
+    answers.appendChild(buttonA);
+
+    answers.appendChild(buttonB);
+}
+
+
+/* =========================================================
+   답변 선택
+========================================================= */
+
+function chooseAnswer(answer) {
+
+    const q = questions[currentQuestion];
+
+
+    if (q.type === "EI") {
+
+        if (answer === "A") {
+            scores.E++;
+        } else {
+            scores.I++;
+        }
+
+    }
+
+
+    if (q.type === "SN") {
+
+        if (answer === "A") {
+            scores.S++;
+        } else {
+            scores.N++;
+        }
+
+    }
+
+
+    if (q.type === "TF") {
+
+        if (answer === "A") {
+            scores.T++;
+        } else {
+            scores.F++;
+        }
+
+    }
+
+
+    if (q.type === "JP") {
+
+        if (answer === "A") {
+            scores.J++;
+        } else {
+            scores.P++;
+        }
+
+    }
+
+
+    currentQuestion++;
+
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+
+    }
+}
+
+
+/* =========================================================
+   MBTI 계산
+========================================================= */
+
+function calculateMBTI() {
+
+    let mbti = "";
+
+
+    mbti +=
+        scores.E >= scores.I
+        ? "E"
+        : "I";
+
+
+    mbti +=
+        scores.S >= scores.N
+        ? "S"
+        : "N";
+
+
+    mbti +=
+        scores.T >= scores.F
+        ? "T"
+        : "F";
+
+
+    mbti +=
+        scores.J >= scores.P
+        ? "J"
+        : "P";
+
+
+    return mbti;
+}
+
+
+/* =========================================================
+   이미지 없을 때
+========================================================= */
+
+function showImageFallback() {
+
+    document.getElementById("result-image")
+        .style.display = "none";
+
+
+    document.getElementById("image-placeholder")
+        .style.display = "block";
+}
+
+
+/* =========================================================
+   결과 보여주기
+========================================================= */
+
+function showResult() {
+
+    const mbti = calculateMBTI();
+
+    const result = results[mbti];
+
+
+    /* MBTI */
+
+    document.getElementById("result-mbti")
+        .textContent = mbti;
+
+
+    /* 유형 이름 */
+
+    document.getElementById("result-name")
+        .textContent = result.name;
+
+
+    /* 설명 */
+
+    document.getElementById("result-description")
+        .textContent = result.description;
+
+
+    /* 이미지 */
+
+    const image =
+        document.getElementById("result-image");
+
+
+    const placeholder =
+        document.getElementById("image-placeholder");
+
+
+    image.style.display = "block";
+
+    placeholder.style.display = "none";
+
+
+    /* 
+       수정된 부분: 
+       results 객체의 image 속성에 적힌 주소를 가져와서 보여줍니다.
+    */
+
+    image.src = result.image;
+
+
+    image.alt =
+        mbti + " 너진똑";
+
+
+    /* 태그 */
+
+    const tagContainer =
+        document.getElementById("result-tags");
+
+
+    tagContainer.innerHTML = "";
+
+
+    result.tags.forEach(function(tag) {
+
+        const span =
+            document.createElement("span");
+
+        span.className = "tag";
+
+        span.textContent =
+            "#" + tag;
+
+        tagContainer.appendChild(span);
+
+    });
+
+
+    /* 결과 화면 */
+
+    showScreen("result-screen");
+}
+
+
+/* =========================================================
+   다시 테스트
+========================================================= */
+
+function restartTest() {
+
+    startTest();
+
+}
+
+</script>
+
+</body>
+</html>
